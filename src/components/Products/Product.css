@@ -1,0 +1,19 @@
+.single-product {
+  display: flex;
+  border-bottom: 1px solid gray;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 10px;
+}
+
+.single-product img {
+  margin-right: 10px;
+}
+
+button {
+  background-color: #f0c14b;
+  padding: 5px 50px;
+  border: 1px solid gray;
+  border-radius: 2px;
+  cursor: pointer;
+}

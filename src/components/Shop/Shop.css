@@ -1,0 +1,15 @@
+.product-wrapper {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.products {
+  border-right: 1px solid gray;
+  margin-left: 100px;
+}
+
+input {
+  width: 80%;
+  margin: 20px 0;
+  line-height: 20px;
+}
