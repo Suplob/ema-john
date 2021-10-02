@@ -18,7 +18,7 @@ const useCart = (products) => {
       }
       setList(storedCart);
     }
-  }, [products, list]);
+  }, [products]);
 
   return [list, setList];
 };

@@ -4,6 +4,7 @@ import Products from "../Products/Products";
 import { addToDb } from "../../utilities/fakeDb";
 import "./Shop.css";
 import useCart from "../../hooks/useCart";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
   const [product, setProduct] = useState([]);
@@ -21,7 +22,17 @@ const Shop = () => {
   }, []);
 
   function displayReview(data) {
-    setList([...list, data]);
+    const exist = list.find((pd) => pd.key === data.key);
+    let newCart = [];
+    if (exist) {
+      const rest = list.filter((pd) => pd.key === data.key);
+      exist.quantity = exist.quantity + 1;
+      newCart = [...rest, data];
+    } else {
+      product.quantity = 1;
+      newCart = [...list, data];
+    }
+    setList(newCart);
     addToDb(data.key);
   }
 
@@ -53,11 +64,11 @@ const Shop = () => {
           ))}
         </div>
         <div>
-          <List
-            list={list}
-            buttonContent="Checkout"
-            redirectTo="/review"
-          ></List>
+          <List list={list}>
+            <Link to="/review">
+              <button>Review your order</button>
+            </Link>
+          </List>
         </div>
       </div>
     </>

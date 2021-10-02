@@ -12,14 +12,13 @@ const List = (props) => {
     total = total + product.price * product.quantity;
     totalQuantity += product.quantity;
   }
+
   return (
     <div className="list">
       <h3>Order Summary</h3>
       <p>Items Ordered: {totalQuantity}</p>
       <p>Total: {total.toFixed(2)}</p>
-      <Link to={props.redirectTo}>
-        <button>{props.buttonContent}</button>
-      </Link>
+      {props.children}
     </div>
   );
 };
