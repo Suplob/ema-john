@@ -25,7 +25,7 @@ const Shop = () => {
     const exist = list.find((pd) => pd.key === data.key);
     let newCart = [];
     if (exist) {
-      const rest = list.filter((pd) => pd.key === data.key);
+      const rest = list.filter((pd) => pd.key !== data.key);
       exist.quantity = exist.quantity + 1;
       newCart = [...rest, data];
     } else {
@@ -51,6 +51,7 @@ const Shop = () => {
           onChange={handleSearch}
           type="text"
           placeholder="Search Product"
+          className="search-input"
         />
       </nav>
       <div className="product-wrapper">

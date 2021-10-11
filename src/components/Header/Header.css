@@ -4,13 +4,17 @@ nav {
   background-color: black;
 }
 
-nav a {
+nav a,
+.display-name,
+.logout {
   color: white;
   text-decoration: none;
   margin-right: 5px;
   font-weight: 700;
   padding: 20px;
+  cursor: pointer;
 }
-nav a:hover {
+nav a:hover,
+.logout:hover {
   background-color: gray;
 }
