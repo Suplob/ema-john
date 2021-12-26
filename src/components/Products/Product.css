@@ -10,7 +10,8 @@
   margin-right: 10px;
 }
 
-button {
+button,
+.btn-regular {
   background-color: #f0c14b;
   padding: 5px 50px;
   border: 1px solid gray;

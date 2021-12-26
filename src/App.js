@@ -3,6 +3,7 @@ import "./App.css";
 import Checkout from "./components/Checkout/Checkout";
 import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
+import Order from "./components/Order/Order";
 import OrderReview from "./components/OrderReview/OrderReview";
 import Register from "./components/Register/Register";
 import Shop from "./components/Shop/Shop";
@@ -25,9 +26,9 @@ function App() {
             <PrivateRoute path="/review">
               <OrderReview />
             </PrivateRoute>
-            <Route path="/checkout">
+            <PrivateRoute path="/checkout">
               <Checkout></Checkout>
-            </Route>
+            </PrivateRoute>
             <Route path="/register">
               <Register></Register>
             </Route>
@@ -38,6 +39,9 @@ function App() {
               <h1 style={{ textAlign: "center" }}>
                 I'm too lazy to make this route :)
               </h1>
+            </Route>
+            <Route path="/order">
+              <Order></Order>
             </Route>
             <Route path="*">
               <h1>404 not found</h1>

@@ -9,17 +9,24 @@ import { Link } from "react-router-dom";
 const Shop = () => {
   const [product, setProduct] = useState([]);
   const [list, setList] = useCart(product);
+  const [pageCount, setPageCount] = useState(0);
+  const [page, setPage] = useState(0);
+  const size = 10;
+
   const [displayProducts, setDisplayProducts] = useState([]);
   useEffect(() => {
     fetch(
-      "https://raw.githubusercontent.com/ProgrammingHero1/ema-john-simple-resources/master/fakeData/products.JSON?fbclid=IwAR3KXBNJBtb2EImQNUA07e7oGkNnkro86sfMbjkZLhDmsCWpFFhmSuGAjCw"
+      `https://ema-john-backend.herokuapp.com/products?page=${page}&&size=${size}`
     )
       .then((res) => res.json())
       .then((data) => {
-        setDisplayProducts(data);
-        setProduct(data);
+        setDisplayProducts(data.products);
+        setProduct(data.products);
+        const count = data.count;
+        const pageNumber = Math.ceil(count / 10);
+        setPageCount(pageNumber);
       });
-  }, []);
+  }, [page]);
 
   function displayReview(data) {
     const exist = list.find((pd) => pd.key === data.key);
@@ -63,6 +70,18 @@ const Shop = () => {
               displayReview={displayReview}
             ></Products>
           ))}
+
+          <div className="pagination">
+            {[...Array(pageCount).keys()].map((number) => (
+              <button
+                key={number}
+                onClick={() => setPage(number)}
+                className={number === page ? "selected" : ""}
+              >
+                {number + 1}
+              </button>
+            ))}
+          </div>
         </div>
         <div>
           <List list={list}>

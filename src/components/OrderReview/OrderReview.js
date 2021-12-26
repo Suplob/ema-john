@@ -20,7 +20,6 @@ const OrderReview = () => {
 
   function placeOrder() {
     setList([]);
-    clearTheCart();
     history.push("/checkout");
   }
 

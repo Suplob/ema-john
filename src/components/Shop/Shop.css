@@ -13,3 +13,16 @@
   margin: 20px 0;
   line-height: 20px;
 }
+
+.pagination {
+  margin: 10px;
+}
+
+.pagination button {
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.pagination .selected {
+  background-color: #b98605;
+}
