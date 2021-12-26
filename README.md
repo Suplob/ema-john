@@ -21,3 +21,15 @@ This is a complete full stacked not amazon clone site made with ReactJS and Mong
 - ExpressJS
 - NodeJS
 - MongoDB
+- Rest API
+- Firebase Authentication
+- Firebase Hosting
+
+## How to clone this repository
+
+```
+    git clone https://github.com/Suplob/ema-john.git
+    cd ema-john
+    npm install
+    npm start
+```
