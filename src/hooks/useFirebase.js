@@ -7,6 +7,7 @@ import {
   signOut,
   createUserWithEmailAndPassword,
   getIdToken,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 
@@ -28,17 +29,29 @@ const useFirebase = () => {
 
   const registerEmail = (emailUser) => {
     const { email, password } = emailUser;
-    if (password.length < 6) {
-      setError("Password should be 6 or more characters length");
-    } else {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((result) => {
-          setUser(result);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        setUser(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const loginUser = (email, password, history, location) => {
+    setLoading(true);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        setUser(userCredential.user);
+        history.replace(location?.state?.from || "/");
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const logout = () => {
@@ -75,6 +88,7 @@ const useFirebase = () => {
     registerEmail,
     setLoading,
     loading,
+    loginUser,
   };
 };
 

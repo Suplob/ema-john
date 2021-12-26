@@ -13,7 +13,6 @@ const Header = () => {
       {!user?.displayName ? (
         <>
           <Link to="/Login">Login</Link>
-          <Link to="/Register">Register</Link>
         </>
       ) : (
         <span className="logout" onClick={logout}>

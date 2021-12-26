@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import "./Login.css";
 
 const Login = () => {
-  const { handleGoogleLogin, setUser, setError, setLoading } = useAuth();
+  const { handleGoogleLogin, setUser, setError, loginUser } = useAuth();
   const location = useLocation();
   const history = useHistory();
 
@@ -18,14 +18,19 @@ const Login = () => {
         setError(err);
       });
   };
+
+  const handleEmailLogin = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentData);
+    const email = form.get("email");
+    const password = form.get("password");
+
+    loginUser(email, password, history, location);
+  };
+
   return (
-    <div className="authentication">
-      <form>
-        <input placeholder="Enter your email here" name="email" type="text" />
-        <br />
-        <input placeholder="Password" name="email" type="password" />
-      </form>
-      <span>Or login with,</span>
+    <div className="authentication" style={{ marginTop: "100px" }}>
+      <span>login with,</span>
       <button style={{ marginTop: "10px" }} onClick={googleLogin}>
         Login with google
       </button>

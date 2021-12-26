@@ -5,7 +5,6 @@ import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import Order from "./components/Order/Order";
 import OrderReview from "./components/OrderReview/OrderReview";
-import Register from "./components/Register/Register";
 import Shop from "./components/Shop/Shop";
 import AuthProvider from "./context/AuthProvider";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
@@ -29,9 +28,6 @@ function App() {
             <PrivateRoute path="/checkout">
               <Checkout></Checkout>
             </PrivateRoute>
-            <Route path="/register">
-              <Register></Register>
-            </Route>
             <Route path="/login">
               <Login></Login>
             </Route>
